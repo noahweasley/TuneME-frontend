@@ -20,8 +20,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.DiscoverActivity"
-            android:theme="@style/Theme.Tuneme"/>
+        <activity
+            android:name=".main.DiscoverActivity"
+            android:theme="@style/Theme.Tuneme" />
+
+        <activity
+            android:name=".main.IntroPageActivity"
+            android:theme="@style/Theme.Tuneme" />
+
+        <activity
+            android:name=".login.LoginActivity"
+            android:theme="@style/Theme.Tuneme" />
 
     </application>
 
