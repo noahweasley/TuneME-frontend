@@ -4,4 +4,11 @@
     <string name="tune_app_icon">tune app icon</string>
     <string name="default_version">Version: 1.0.0</string>
     <string name="close_description">close button</string>
+    <string name="intro_image">intro image</string>
+    <string name="subtitle_0">Find and connect with new friends within your location reach and beyond</string>
+    <string name="title_1">Unlimited Fun</string>
+    <string name="subtitle_1">Share your life and personal experience with friends as pic and videos</string>
+    <string name="title_2">Enjoy Movies</string>
+    <string name="subtitle_2">Don\'t watch movies alone, connect with more than two people to enjoy live streaming together</string>
+    <string name="start">Let\'s start!</string>
 </resources>
