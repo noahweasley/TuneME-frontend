@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Tuneme</string>
+    <string name="app_name">TuneMe</string>
+    <string name="discover">Discover</string>
+    <string name="tune_app_icon">tune app icon</string>
+    <string name="default_version">Version: 1.0.0</string>
+    <string name="close_description">close button</string>
 </resources>
