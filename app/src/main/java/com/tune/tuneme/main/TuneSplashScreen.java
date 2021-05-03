@@ -33,7 +33,7 @@ public class TuneSplashScreen extends AppCompatActivity {
 
         String versionName = String.format(Locale.US, "%s: %s", "Version: ", BuildConfig.VERSION_NAME);
         binding.versionName.setText(versionName);
-        binding.tuneIcon.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
+        binding.tuneIcon.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_2));
         binding.backgroundImage.setImageBitmap(
                 ImageUtils.decodeSampledBitmapFromResource(getResources(),
                         R.drawable.splash_screen_wallpaper_cropped));
