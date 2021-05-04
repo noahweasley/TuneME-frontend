@@ -9,9 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.tune.tuneme.R;
 import com.tune.tuneme.databinding.IntroBinding;
 import com.tune.tuneme.login.LoginActivity;
@@ -29,14 +31,19 @@ public class IntroPageActivity extends AppCompatActivity implements View.OnClick
         ViewPager2 pager_intro = binding.introPager;
         pager_intro.setOffscreenPageLimit(3);
         pager_intro.setAdapter(new IntroPagerAdapter(this));
-
+        // set up page position indicator to react to page scroll
+        new TabLayoutMediator(binding.indicator, pager_intro, (tab, position) -> {
+        }).attach();
         // add scroll listener
         pager_intro.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
 
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-
+                // disable over scroll glow effect at page edge
+                View s_RecyclerView = pager_intro.getChildAt(0);
+                if (s_RecyclerView instanceof RecyclerView)
+                    s_RecyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);
                 // hide or show corresponding views according to page position
                 if (position == 2) {
                     binding.close.setVisibility(View.INVISIBLE);
@@ -48,11 +55,16 @@ public class IntroPageActivity extends AppCompatActivity implements View.OnClick
             }
 
         });
-
         // navigate to login page
         binding.close.setOnClickListener(this);
         binding.start.setOnClickListener(this);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        overridePendingTransition(R.anim.fade_in_1, R.anim.fade_out_1);
+        super.onBackPressed();
     }
 
     @Override
