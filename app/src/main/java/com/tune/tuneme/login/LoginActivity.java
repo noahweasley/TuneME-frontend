@@ -1,6 +1,7 @@
 package com.tune.tuneme.login;
 
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +16,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = LoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Make Licence agreement statements and login text clickable links
+        binding.lcAgree.setMovementMethod(LinkMovementMethod.getInstance());
+        binding.signNow.setMovementMethod(LinkMovementMethod.getInstance());
+
     }
+
 
     @Override
     protected void onDestroy() {
