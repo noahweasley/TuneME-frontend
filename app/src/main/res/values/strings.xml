@@ -11,4 +11,19 @@
     <string name="title_2">Enjoy Movies</string>
     <string name="subtitle_2">Don\'t watch movies alone, connect with more than two people to enjoy live streaming together</string>
     <string name="start">Let\'s start!</string>
+    <string name="back">back</string>
+    <string name="create_account">Create Account</string>
+    <string name="create">Create your new profile</string>
+    <string name="first_name">Firstname</string>
+    <string name="last_name">Last name</string>
+    <string name="user_name">User name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="license_agreement">By registering, you agree with our <b><a href="#">Privacy</a></b>
+        and <b><a href="#">Terms and Conditions</a></b></string>
+    <string name="signup_alt_text">OR SIGNUP VIA</string>
+    <string name="google_sign_in">google sign in</string>
+    <string name="sign_now">Already have an account? <b><a href="#">Login</a></b></string>
 </resources>
