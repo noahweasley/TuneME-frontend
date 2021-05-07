@@ -1,6 +1,5 @@
-package com.tune.tuneme.main;
+package com.tune.tuneme.intro;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -63,8 +62,8 @@ public class IntroPageActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onBackPressed() {
-        overridePendingTransition(R.anim.fade_in_1, R.anim.fade_out_1);
         super.onBackPressed();
+        overridePendingTransition(R.anim.fade_in_1, R.anim.fade_out_1);
     }
 
     @Override
@@ -75,7 +74,7 @@ public class IntroPageActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(this, LoginActivity.class));
+        LoginActivity.start(this);
         finish();
     }
 

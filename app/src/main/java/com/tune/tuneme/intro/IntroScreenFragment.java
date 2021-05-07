@@ -1,4 +1,4 @@
-package com.tune.tuneme.main;
+package com.tune.tuneme.intro;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +15,6 @@ import com.tune.tuneme.R;
 import com.tune.tuneme.databinding.IntroPageBinding;
 import com.tune.tuneme.util.ImageUtils;
 
-@SuppressWarnings("ConstantConditions")
 public class IntroScreenFragment extends Fragment {
     private static final String ARG_POSITION = "page position";
     private IntroPageBinding binding;
