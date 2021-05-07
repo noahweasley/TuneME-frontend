@@ -1,6 +1,9 @@
 package com.tune.tuneme.main;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.GestureDetector;
@@ -13,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.tune.tuneme.BuildConfig;
 import com.tune.tuneme.R;
 import com.tune.tuneme.databinding.TuneSplashBinding;
+import com.tune.tuneme.intro.IntroPageActivity;
 import com.tune.tuneme.util.ImageUtils;
 
 import java.util.Locale;
@@ -31,14 +35,25 @@ public class TuneSplashScreen extends AppCompatActivity {
         binding = TuneSplashBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        String versionName = String.format(Locale.US, "%s: %s", "Version: ", BuildConfig.VERSION_NAME);
+        // just in case an exception was thrown, but will never throw an exception, because
+        // package name was gotten at runtime. So it has to be a valid package name.
+        String version = BuildConfig.VERSION_NAME;
+        try {
+            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            version = pInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String versionName = String.format(Locale.US, "%s: %s", "Version: ", version);
         binding.versionName.setText(versionName);
         binding.tuneIcon.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_2));
-        binding.backgroundImage.setImageBitmap(
-                ImageUtils.decodeSampledBitmapFromResource(getResources(),
-                        R.drawable.splash_screen_wallpaper_cropped));
+        // sub-sample image when stored in memory
+        Bitmap bitmap = ImageUtils.decodeSampledBitmapFromResource(getResources(),
+                                                                   R.drawable.splash_screen_wallpaper);
 
-        // Display main screen after the splash screen
+        binding.backgroundImage.setImageBitmap(bitmap);
+        // Display intro screen after the splash screen
         (handler = new Handler(getMainLooper())).postDelayed(startMain = this::launch, TIMEOUT);
     }
 
