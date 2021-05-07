@@ -14,9 +14,14 @@ import com.tune.tuneme.databinding.CompleteRegistrationBinding;
 public class CompleteRegistrationActivity extends AppCompatActivity {
     private CompleteRegistrationBinding binding;
 
+    /**
+     * Convenience method to start this activity and pass other details to it
+     * @param context the starter
+     */
     public static void start(Context context) {
         Intent starter = new Intent(context, CompleteRegistrationActivity.class);
         context.startActivity(starter);
+
     }
 
     @Override
