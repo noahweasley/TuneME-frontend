@@ -5,7 +5,7 @@
         <shape>
             <solid android:color="@color/colorPrimary" />
             <corners android:radius="50dp" />
-            <padding android:left="60dp" android:right="60dp" />
+            <padding android:left="80dp" android:right="80dp" />
         </shape>
     </item>
 
@@ -13,7 +13,7 @@
         <shape>
             <solid android:color="@color/colorPrimary_lighter" />
             <corners android:radius="50dp" />
-            <padding android:left="60dp" android:right="60dp" />
+            <padding android:left="80dp" android:right="80dp" />
         </shape>
     </item>
 

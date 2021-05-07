@@ -14,4 +14,14 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="rounded">
+        <item name="borderWidth">2dp</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="rounded_corners" parent="rounded">
+        <item name="cornerSize">8dp</item>
+    </style>
+
 </resources>
