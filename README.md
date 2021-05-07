@@ -1,3 +1,3 @@
 # Tuneme
 
-## A social media app
+## The front end part
