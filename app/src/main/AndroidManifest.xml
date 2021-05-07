@@ -5,14 +5,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_tune"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_tune_rounded"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FullScreen"
+        android:theme="@style/Theme.Tuneme"
         tools:ignore="AllowBackup">
 
-        <activity android:name=".main.TuneSplashScreen">
+        <activity
+            android:name=".main.TuneSplashScreen"
+            android:theme="@style/Theme.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,17 +22,21 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".main.DiscoverActivity"
-            android:theme="@style/Theme.Tuneme" />
+        <activity android:name=".discover.DiscoverActivity" />
 
-        <activity
-            android:name=".main.IntroPageActivity"
-            android:theme="@style/Theme.Tuneme" />
+        <activity android:name=".intro.IntroPageActivity" />
 
         <activity
             android:name=".login.LoginActivity"
-            android:theme="@style/Theme.Tuneme" />
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".login.GoogleLoginActivity"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".login.CompleteRegistrationActivity"
+            android:windowSoftInputMode="adjustResize" />
 
     </application>
 
