@@ -17,6 +17,10 @@ public class ImageUtils {
      * @return the sub-sampled image based on the size specified
      */
     public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId) {
+        final int LDPI_LOWER = 320;
+        final int LDPI_HIGHER = 400;
+        final int XXHDPI = 560;
+        final int MDPI = 480;
         // First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
@@ -27,11 +31,11 @@ public class ImageUtils {
 
         Log.d(TAG, "Density: " + density + " dpi");
 
-        if (density <= Density.LDPI_LOWER) {
+        if (density <= LDPI_LOWER) {
             inSampleSize = 5;
-        } else if (density <= Density.LDPI_HIGHER && density > Density.LDPI_LOWER) {
+        } else if (density <= LDPI_HIGHER && density > LDPI_LOWER) {
             inSampleSize = 4;
-        } else if (density <= Density.MDPI && density < Density.XXHDPI) {
+        } else if (density <= MDPI && density < XXHDPI) {
             inSampleSize = 3;
         } else inSampleSize = 2;
         options.inSampleSize = inSampleSize;
