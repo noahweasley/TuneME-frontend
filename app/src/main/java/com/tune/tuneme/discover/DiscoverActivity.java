@@ -1,4 +1,4 @@
-package com.tune.tuneme.main;
+package com.tune.tuneme.discover;
 
 import android.os.Bundle;
 
