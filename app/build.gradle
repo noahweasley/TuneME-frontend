@@ -21,6 +21,18 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        // changing the default apk build name from app-debug to proper name
+        applicationVariants.all {
+            variant ->
+                variant.outputs.each {
+                    output ->
+                        def date = new Date().format("MM-yyyy")
+                        def appName = "TuneMe_v${variant.versionName}_${date}.apk"
+                        output.outputFileName = appName
+                }
+        }
+
     }
 
     compileOptions {
@@ -43,4 +55,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation "androidx.cardview:cardview:1.0.0"
+    def retrofit_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
