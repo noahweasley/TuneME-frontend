@@ -24,7 +24,7 @@
             android:contentDescription="@string/back"
             android:src="@drawable/ic_baseline_chevron_left_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent]"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -175,8 +175,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:checked="true"
-        android:textColorHighlight="@color/colorAccent"
-        android:textColorLink="@color/colorPrimary"
         app:layout_constraintBaseline_toBaselineOf="@id/txt_lc_agree"
         app:layout_constraintStart_toStartOf="@id/left_guide"
         tools:ignore="RtlSymmetry" />
@@ -249,7 +247,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="@string/sign_now"
-        android:textColorHighlight="@color/colorAccent"
+        android:textColorHighlight="@color/colorPrimary_5"
         android:textColorLink="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/right_guide"
