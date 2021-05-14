@@ -38,6 +38,8 @@
             android:name=".login.CompleteRegistrationActivity"
             android:windowSoftInputMode="adjustResize" />
 
+        <activity android:name=".login.AddFollowersPageActivity" />
+
     </application>
 
 </manifest>
