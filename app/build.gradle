@@ -60,5 +60,22 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    // room library
+    def room_version = "2.3.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    // optional - RxJava2 support for Room
+    implementation "androidx.room:room-rxjava2:$room_version"
+    // optional - RxJava3 support for Room
+    implementation "androidx.room:room-rxjava3:$room_version"
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation "androidx.room:room-guava:$room_version"
+    // optional - Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+    // Lifecycle components
+    def lifeCycleVersion = "2.3.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifeCycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata:$lifeCycleVersion"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifeCycleVersion"
 
 }
