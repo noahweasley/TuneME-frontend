@@ -1,5 +1,6 @@
 package com.tune.tuneme.intro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -57,7 +58,6 @@ public class IntroPageActivity extends AppCompatActivity implements View.OnClick
         // navigate to login page
         binding.close.setOnClickListener(this);
         binding.start.setOnClickListener(this);
-
     }
 
     @Override
@@ -74,8 +74,8 @@ public class IntroPageActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        LoginActivity.start(this);
-        finish();
+        startActivity(new Intent(this, LoginActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
     }
 
     private static class IntroPagerAdapter extends FragmentStateAdapter {
