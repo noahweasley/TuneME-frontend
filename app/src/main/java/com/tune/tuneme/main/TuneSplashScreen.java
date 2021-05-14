@@ -31,7 +31,21 @@ public class TuneSplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        gestureDetector = new GestureDetector(this, new TapGestureDetector());
+        // intercept touch and provide skip splash screen on double-tap
+        gestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onDown(MotionEvent e) {
+                return true;
+            }
+
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                removeSystemCallback();
+                launch();
+                return true;
+            }
+        });
+
         binding = TuneSplashBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -50,7 +64,7 @@ public class TuneSplashScreen extends AppCompatActivity {
         binding.tuneIcon.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_2));
         // sub-sample image when stored in memory
         Bitmap bitmap = ImageUtils.decodeSampledBitmapFromResource(getResources(),
-                                                                   R.drawable.splash_screen_wallpaper);
+                R.drawable.splash_screen_wallpaper);
 
         binding.backgroundImage.setImageBitmap(bitmap);
         // Display intro screen after the splash screen
@@ -65,8 +79,8 @@ public class TuneSplashScreen extends AppCompatActivity {
     }
 
     private void launch() {
-        startActivity(new Intent(this, IntroPageActivity.class));
-        finish();
+        startActivity(new Intent(this, IntroPageActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
     }
 
     private void removeSystemCallback() {
@@ -81,19 +95,4 @@ public class TuneSplashScreen extends AppCompatActivity {
         return super.onTouchEvent(event);
     }
 
-    // intercept touch and provide skip splash screen on double-tap
-    private class TapGestureDetector extends GestureDetector.SimpleOnGestureListener {
-
-        @Override
-        public boolean onDown(MotionEvent e) {
-            return true;
-        }
-
-        @Override
-        public boolean onDoubleTap(MotionEvent e) {
-            removeSystemCallback();
-            launch();
-            return true;
-        }
-    }
 }
