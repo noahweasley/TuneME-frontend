@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_pressed="false">
+    <item android:state_pressed="false" android:state_enabled="true">
         <shape>
             <solid android:color="@color/colorPrimary" />
             <corners android:radius="50dp" />
@@ -9,9 +9,17 @@
         </shape>
     </item>
 
-    <item android:state_pressed="true">
+    <item android:state_pressed="true" android:state_enabled="true" >
         <shape>
             <solid android:color="@color/colorPrimary_lighter" />
+            <corners android:radius="50dp" />
+            <padding android:left="80dp" android:right="80dp" />
+        </shape>
+    </item>
+
+    <item android:state_enabled="false" >
+        <shape>
+            <solid android:color="@color/colorPrimary_disabled" />
             <corners android:radius="50dp" />
             <padding android:left="80dp" android:right="80dp" />
         </shape>
