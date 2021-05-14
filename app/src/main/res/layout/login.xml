@@ -174,7 +174,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:checked="true"
         app:layout_constraintBaseline_toBaselineOf="@id/txt_lc_agree"
         app:layout_constraintStart_toStartOf="@id/left_guide"
         tools:ignore="RtlSymmetry" />
@@ -199,6 +198,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_rounded_edges"
         android:text="@string/sign_up"
+        android:enabled="false"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/right_guide"
