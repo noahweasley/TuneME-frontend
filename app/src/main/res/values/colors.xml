@@ -15,4 +15,5 @@
     <color name="darker_gray_50">#2CAAAAAA</color>
     <color name="light_grey">#D1CDCC</color>
     <color name="colorPrimary_5">#0D1338BE</color>
+    <color name="colorPrimary_disabled">#7288D8</color>
 </resources>
