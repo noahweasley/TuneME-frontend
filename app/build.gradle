@@ -55,6 +55,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation "androidx.cardview:cardview:1.0.0"
+    // retrofit
     def retrofit_version = "2.9.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
@@ -77,5 +78,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifeCycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata:$lifeCycleVersion"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifeCycleVersion"
-
+    // external library
+    implementation 'io.github.everythingme:overscroll-decor-android:1.1.1'
 }
