@@ -4,14 +4,17 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorPrimaryDark" tools:targetApi="m">@color/white</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>
     </style>
 
     <style name="Theme.FullScreen" parent="Theme.Tuneme">
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="Theme.Immersive" parent="Theme.Tuneme">
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
     </style>
 
     <style name="rounded">
