@@ -71,7 +71,6 @@ public class DateChooserEditText extends TextInputEditText {
     public boolean onTouchEvent(MotionEvent event) {
         Rect bounds;
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            // allow for extra padding space because, the drawable didn't start from the far right
             actionX = (int) (event.getX());
             actionY = (int) event.getY();
             if (drawableBottom != null && drawableBottom.getBounds().contains(actionX, actionY)) {
@@ -127,10 +126,10 @@ public class DateChooserEditText extends TextInputEditText {
                 int extraTapArea = 13;
 
                 /*
-                  IF USER CLICKS JUST OUT SIDE THE RECTANGLE OF THE DRAWABLE
-                  THAN ADD X AND SUBTRACT THE Y WITH SOME VALUE SO THAT AFTER
-                  CALCULATING X AND Y CO-ORDINATE LIES INTO THE DRAWABLE
-                  BOUND. - this process help to increase the tappable area of
+                  if user clicks just out side the rectangle of the drawable
+                  than add x and subtract the y with some value so that after
+                  calculating x and y co-ordinate lies into the drawable
+                  bound. - this process help to increase the tappable area of
                   the rectangle.
                  */
                 x = (int) (actionX + extraTapArea);
