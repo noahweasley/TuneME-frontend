@@ -4,7 +4,10 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -67,15 +70,35 @@ public class CompleteRegistrationActivity extends AppCompatActivity {
                                                  calendar.get(Calendar.DAY_OF_MONTH))
                         .show());
 
-        binding.signUp.setOnClickListener(v -> validateDateInput(binding.datePicker));
+        binding.signUp.setOnClickListener(v -> validateFormData(binding));
     }
 
     // validate date input
-    private void validateDateInput(DateChooserEditText datePicker) {
+    private void validateFormData(CompleteRegistrationBinding binding) {
         String datePattern = "^((0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](\\d){4})$";
-        if (datePicker.getText().toString().matches(datePattern)) {
+
+        AutoCompleteTextView atv_countryList = binding.listCountries;
+        boolean isCountryEmpty = TextUtils.isEmpty(atv_countryList.getText());
+
+        DateChooserEditText datePicker = binding.datePicker;
+        boolean dateMatches = datePicker.getText().toString().matches(datePattern);
+
+        if (dateMatches && !isCountryEmpty) {
             startActivity(new Intent(this, AddFollowersPageActivity.class));
-        } else ((TextInputLayout) datePicker.getParent()).setError("dd-mm-yyyy or dd/mm-yyy");
+        } else {
+            // because TextInputLayout has child FrameLayout that is the TextInputEditText's parent
+            // view, calling getParent() directly on the TextInputEditText will return the FrameLayout
+            // and not the TextInputLayout
+            if (!dateMatches) {
+                ViewGroup container = (ViewGroup) datePicker.getParent();
+                ((TextInputLayout) container.getParent()).setError("dd-mm-yyyy or dd/mm-yyy");
+            }
+
+            if (isCountryEmpty) {
+                ViewGroup container = (ViewGroup) atv_countryList.getParent();
+                ((TextInputLayout) container.getParent()).setError("Field can't be empty");
+            }
+        }
     }
 
     @Override
