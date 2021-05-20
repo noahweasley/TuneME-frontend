@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class FollowersState implements State {
     public static final String ARG_STATES = "Choice states";
     public static final String ARG_ID_INDICES = "Id Indices";
@@ -18,11 +19,15 @@ public class FollowersState implements State {
     private List<Integer> indices = new ArrayList<>();
     private ParcelableSparseBooleanArray sbarr = new ParcelableSparseBooleanArray();
 
-    @SuppressWarnings("unused")
     public FollowersState() {
     }
 
-    @SuppressWarnings("unused")
+    /**
+     * use this constructor if logging states is required for testing otherwise use the default one
+     * or set <code>loggingEnabled</code> to false
+     *
+     * @param loggingEnabled if states should be logged to the console
+     */
     public FollowersState(boolean loggingEnabled) {
         this.loggingEnabled = loggingEnabled;
     }
@@ -62,7 +67,6 @@ public class FollowersState implements State {
         return indices.toArray(new Integer[0]);
     }
 
-    @SuppressWarnings("unused")
     void setLoggingEnabled(boolean loggingEnabled) {
         this.loggingEnabled = loggingEnabled;
     }
@@ -70,6 +74,6 @@ public class FollowersState implements State {
     @NonNull
     @Override
     public String toString() {
-        return "{" + "indices=" + indices + ", sbarr=" + sbarr + '}';
+        return "{" + "indices=" + indices + ", \n sbarr=" + sbarr + '}';
     }
 }
