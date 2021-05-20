@@ -21,11 +21,11 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="sign_up">Sign Up</string>
-    <string name="license_agreement">By registering, you agree with our <b><a href="#">Privacy Policy</a></b>
-        and <b><a href="#">Terms and Conditions</a></b></string>
+    <string name="license_agreement">By registering, you agree with our <b><a href="www.privacy-options.com">Privacy Policy</a></b>
+        and <b><a href="www.terms-and-conditions.com">Terms and Conditions</a></b></string>
     <string name="signup_alt_text">OR SIGNUP VIA</string>
     <string name="google_sign_in">google sign in</string>
-    <string name="sign_now">Already have an account? <b><a href="#">Login</a></b></string>
+    <string name="sign_now">Already have an account? <b><a href="@login_page">Login</a></b></string>
     <string name="complete_profile">Complete Profile</string>
     <string name="complete_your_new_profile">Complete your new profile</string>
     <string name="upload">upload</string>
