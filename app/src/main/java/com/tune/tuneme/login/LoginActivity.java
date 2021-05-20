@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.gSignParent.setOnClickListener(v ->
                 startActivity(new Intent(this, GoogleLoginActivity.class)));
 
-        binding.signUp.setOnClickListener(v -> CompleteRegistrationActivity.start(this));
+        binding.signUp.setOnClickListener(v -> VerificationActivity.start(this));
         binding.cbxLcAgree.setOnCheckedChangeListener(
                 (buttonView, isChecked) -> binding.signUp.setEnabled(isChecked));
 

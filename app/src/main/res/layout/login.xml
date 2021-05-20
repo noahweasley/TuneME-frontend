@@ -164,7 +164,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/email"
                 tools:ignore="Autofill,LabelFor" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
@@ -174,6 +173,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:checked="true"
         android:layout_marginLeft="8dp"
         app:layout_constraintBaseline_toBaselineOf="@id/txt_lc_agree"
         app:layout_constraintStart_toStartOf="@id/left_guide"
@@ -199,7 +199,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_rounded_edges"
         android:text="@string/sign_up"
-        android:enabled="false"
+        android:enabled="true"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/right_guide"
@@ -230,7 +230,7 @@
         app:contentPadding="8dp"
         app:layout_constraintBottom_toTopOf="@id/sign_now"
         app:layout_constraintEnd_toEndOf="@id/right_guide"
-        app:layout_constraintStart_toStartOf="@id/left_guide"
+        app:layout_constraintStart_toStartOf="@+id/left_guide"
         app:layout_constraintTop_toBottomOf="@+id/gs_header">
 
         <ImageView
