@@ -1,4 +1,4 @@
-package com.tune.tuneme.login;
+package com.tune.tuneme.follow;
 
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +18,10 @@ import java.util.List;
 public class FollowersRowHolder extends RecyclerView.ViewHolder {
     private ImageView img_profilePhoto;
     private TextView tv_username, tv_profileName;
+    private AddFollowersPageActivity.EndlessFollowersAdapter adapter;
     private Followers follower;
     private boolean isLast;
+    private boolean following;
     private int viewType;
     private View divider;
     private Button btn_listAction;
@@ -33,12 +35,15 @@ public class FollowersRowHolder extends RecyclerView.ViewHolder {
             tv_username = itemView.findViewById(R.id.user_name);
             divider = itemView.findViewById(R.id.divider);
             btn_listAction = itemView.findViewById(R.id.list_action);
+            btn_listAction.setActivated(true);
 
             btn_listAction.setOnClickListener(v -> {
+                following = !following;
                 sendFollowUserRequest();
-                btn_listAction.setText(R.string.following);
+                btn_listAction.setText(following ? R.string.following : R.string.add);
                 // just a logic used to set the list action button to following action button
-                btn_listAction.setActivated(false);
+                btn_listAction.setActivated(!following);
+                adapter.onFollow(getAdapterPosition(), following);
             });
         }
     }
@@ -47,7 +52,11 @@ public class FollowersRowHolder extends RecyclerView.ViewHolder {
     private void sendFollowUserRequest() {
     }
 
-    public FollowersRowHolder with(List<Followers> followersList, boolean isLast) {
+    public FollowersRowHolder with(
+            AddFollowersPageActivity.EndlessFollowersAdapter endlessFollowersAdapter,
+            List<Followers> followersList,
+            boolean isLast) {
+        adapter = endlessFollowersAdapter;
         this.follower = followersList.get(getAdapterPosition());
         this.isLast = isLast;
         return this;
@@ -55,7 +64,13 @@ public class FollowersRowHolder extends RecyclerView.ViewHolder {
 
     public void bindView() {
         if (this.viewType == 0) {
+            // just a logic used to set the list action button to following action button
+            following = adapter.isFollowing(getAdapterPosition());
+            btn_listAction.setActivated(!following);
+            btn_listAction.setText(following ? R.string.following : R.string.add);
+            // remove bottom separator if last visible
             divider.setVisibility(isLast ? View.INVISIBLE : View.VISIBLE);
+
             tv_username.setText(follower.getUserName());
             tv_profileName.setText(follower.getProfileName());
             if (follower.getProfilePicture() != null) {

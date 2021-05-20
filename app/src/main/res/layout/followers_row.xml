@@ -44,14 +44,14 @@
 
     <Button
         android:id="@+id/list_action"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:enabled="true"
         android:background="@drawable/bg_rounded_edges_fit"
         android:text="@string/add"
-        android:textColor="@android:color/white"
+        android:textColor="@color/list_action_color"
         android:textSize="12sp"
         app:layout_constraintBaseline_toBaselineOf="@id/profile_name"
         app:layout_constraintEnd_toEndOf="parent" />

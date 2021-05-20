@@ -1,4 +1,4 @@
-package com.tune.tuneme.login;
+package com.tune.tuneme.follow;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tune.tuneme.R;
 import com.tune.tuneme.data.Followers;
 import com.tune.tuneme.databinding.AddFollowersBinding;
+import com.tune.tuneme.discover.DiscoverActivity;
 import com.tune.tuneme.util.DummyFollowers;
 
 import java.util.List;
@@ -24,11 +25,13 @@ public class AddFollowersPageActivity extends AppCompatActivity {
     private List<Followers> followersList;
     private RecyclerView.Adapter<?> endlessFollowersAdapter;
     private boolean isLoading;
+    private final State state = new FollowersState();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // use dummy followers for now
         followersList = DummyFollowers.initialize(20);
+
         super.onCreate(savedInstanceState);
         binding = AddFollowersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -36,11 +39,14 @@ public class AddFollowersPageActivity extends AppCompatActivity {
         RecyclerView rV_followersList = binding.followersList;
         rV_followersList.setLayoutManager
                 (new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        rV_followersList.setAdapter((endlessFollowersAdapter = new EndlessFollowersAdapter()));
+        endlessFollowersAdapter = new EndlessFollowersAdapter(state);
+        rV_followersList.setAdapter(endlessFollowersAdapter);
         initScrollDetectionFor(rV_followersList); // start end of scroll detection
         // remove default over-scroll glow effect and use IOS style
         OverScrollDecoratorHelper
                 .setUpOverScroll(rV_followersList, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
+
+        binding.next.setOnClickListener(v -> DiscoverActivity.start(this));
     }
 
     // starts end of scroll detection
@@ -60,7 +66,7 @@ public class AddFollowersPageActivity extends AppCompatActivity {
                 }
             }
 
-            // gets more followers
+            // debugging mode: gets more followers
             private boolean getMoreFollowers() {
                 followersList.add(null);
                 int lastItem = followersList.size() - 1;
@@ -81,6 +87,18 @@ public class AddFollowersPageActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        state.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        state.onSaveInstanceState(outState);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         binding = null;
@@ -88,9 +106,14 @@ public class AddFollowersPageActivity extends AppCompatActivity {
 
     // List adapter for follower list
     @SuppressWarnings("FieldCanBeLocal")
-    private class EndlessFollowersAdapter extends RecyclerView.Adapter<FollowersRowHolder> {
-        private final int VIEW_TYPE_ITEM = 0;
-        private final int VIEW_TYPE_LOADING = 1;
+    class EndlessFollowersAdapter extends RecyclerView.Adapter<FollowersRowHolder> {
+        private final int VIEW_TYPE_ITEM = 0; // followers' list layout
+        private final int VIEW_TYPE_LOADING = 1; // list loading layout
+        private final State state;
+
+        public EndlessFollowersAdapter(State state) {
+            this.state = state;
+        }
 
         @NonNull
         @Override
@@ -106,7 +129,7 @@ public class AddFollowersPageActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull FollowersRowHolder holder, int position) {
             // keep all the row view binding business logic in the row view holder
-            holder.with(followersList, position == followersList.size() - 1).bindView();
+            holder.with(this, followersList, position == followersList.size() - 1).bindView();
         }
 
         @Override
@@ -117,6 +140,26 @@ public class AddFollowersPageActivity extends AppCompatActivity {
         @Override
         public int getItemViewType(int position) {
             return followersList.get(position) == null ? VIEW_TYPE_LOADING : VIEW_TYPE_ITEM;
+        }
+
+        /**
+         * Persist the "following" state of the suggested follower, even when list row has been
+         * recycled or there was a configuration change
+         *
+         * @param position the position of the suggested follower
+         */
+        public void onFollow(int position, boolean st) {
+            state.setChecked(position, st);
+        }
+
+        /**
+         * Request to know if a particular suggested follower was previously followed
+         *
+         * @param position the position of the suggested follower
+         * @return true if the suggested follower, has been followed
+         */
+        public boolean isFollowing(int position) {
+            return state.isChecked(position);
         }
     }
 }
