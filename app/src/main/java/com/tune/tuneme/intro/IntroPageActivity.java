@@ -16,7 +16,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.tune.tuneme.R;
 import com.tune.tuneme.databinding.IntroBinding;
-import com.tune.tuneme.login.LoginActivity;
+import com.tune.tuneme.login.RegistrationActivity;
 
 public class IntroPageActivity extends AppCompatActivity implements View.OnClickListener {
     private IntroBinding binding;
@@ -74,7 +74,7 @@ public class IntroPageActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(this, LoginActivity.class)
+        startActivity(new Intent(this, RegistrationActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
     }
 
