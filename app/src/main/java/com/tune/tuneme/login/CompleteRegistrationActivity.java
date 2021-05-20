@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.tune.tuneme.R;
 import com.tune.tuneme.custom.DateChooserEditText;
 import com.tune.tuneme.databinding.CompleteRegistrationBinding;
+import com.tune.tuneme.follow.AddFollowersPageActivity;
 
 import java.util.Calendar;
 import java.util.Locale;

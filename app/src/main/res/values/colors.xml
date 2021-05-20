@@ -13,7 +13,8 @@
     <color name="white">#FFF</color>
     <color name="red">#D50000</color>
     <color name="darker_gray_50">#2CAAAAAA</color>
-    <color name="light_grey">#D1CDCC</color>
+    <color name="light_grey">#ACABAB</color>
     <color name="colorPrimary_5">#0D1338BE</color>
     <color name="colorPrimary_disabled">#7288D8</color>
+    <color name="lighter_grey">#FAFAFA</color>
 </resources>
