@@ -64,6 +64,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
             }
         };
+
         strBuilder.setSpan(clickable, start, end, flags);
         strBuilder.removeSpan(span);
     }
