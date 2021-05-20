@@ -14,7 +14,10 @@
 
         <activity
             android:name=".main.TuneSplashScreen"
-            android:theme="@style/Theme.FullScreen">
+            android:theme="@style/Theme.FullScreen"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,23 +25,48 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".discover.DiscoverActivity" />
+        <activity android:name=".discover.DiscoverActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            tools:ignore="LockedOrientationActivity"/>
 
-        <activity android:name=".intro.IntroPageActivity" />
+        <activity android:name=".intro.IntroPageActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            tools:ignore="LockedOrientationActivity"/>
 
         <activity
             android:name=".login.LoginActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            tools:ignore="LockedOrientationActivity"/>
 
         <activity
             android:name=".login.GoogleLoginActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            tools:ignore="LockedOrientationActivity"/>
 
         <activity
             android:name=".login.CompleteRegistrationActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            tools:ignore="LockedOrientationActivity"/>
 
-        <activity android:name=".login.AddFollowersPageActivity" />
+        <activity android:name=".follow.AddFollowersPageActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            tools:ignore="LockedOrientationActivity"/>
+
+        <activity
+            android:name=".login.VerificationActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            tools:ignore="LockedOrientationActivity"/>
 
     </application>
 
