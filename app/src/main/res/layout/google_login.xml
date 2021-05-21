@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
+    android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -10,7 +11,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="@string/create_account"
         android:textColor="@color/colorPrimary"
         android:textSize="32sp"
@@ -31,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password_parent"
+        android:id="@+id/user_name_parent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -42,7 +43,7 @@
         tools:viewBindingIgnore="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
+            android:id="@+id/user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_baseline_alternate_email_24"
@@ -62,7 +63,7 @@
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="@id/right_guide"
         app:layout_constraintStart_toStartOf="@id/left_guide"
-        app:layout_constraintTop_toBottomOf="@+id/password_parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_name_parent"
         tools:viewBindingIgnore="true">
 
         <com.google.android.material.textfield.TextInputEditText

@@ -17,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.fade_in_1, R.anim.fade_out_1);
         binding = LoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
     }
 
     @Override

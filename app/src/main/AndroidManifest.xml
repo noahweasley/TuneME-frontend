@@ -45,7 +45,7 @@
             tools:ignore="LockedOrientationActivity" />
 
         <activity
-            android:name=".login.GoogleLoginActivity"
+            android:name=".login.GoogleLoginCompletionActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"

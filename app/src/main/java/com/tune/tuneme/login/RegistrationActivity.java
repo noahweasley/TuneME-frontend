@@ -1,5 +1,6 @@
 package com.tune.tuneme.login;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,13 +12,25 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+import com.tune.tuneme.R;
 import com.tune.tuneme.databinding.RegistrationBinding;
 
 public class RegistrationActivity extends AppCompatActivity {
     private RegistrationBinding binding;
+    private GoogleSignInClient mGoogleSignInClient;
+    public static final String TAG = "RegistrationActivity";
+    private ActivityResultLauncher<Intent> resultLauncher;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,10 +38,11 @@ public class RegistrationActivity extends AppCompatActivity {
         binding = RegistrationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.gSignParent.setOnClickListener(
-                v -> startActivity(new Intent(this, GoogleLoginActivity.class)));
+        registerGoogleSignInCallback();
+        binding.gSignParent.setOnClickListener(v -> doGoogleSignIn());
 
-        binding.signUp.setOnClickListener(v -> VerificationActivity.start(this));
+        String phoneNumber = binding.phoneNumber.getText().toString();
+        binding.signUp.setOnClickListener(v -> VerificationActivity.start(this, phoneNumber));
         binding.cbxLcAgree.setOnCheckedChangeListener(
                 (buttonView, isChecked) -> binding.signUp.setEnabled(isChecked));
 
@@ -36,6 +50,63 @@ public class RegistrationActivity extends AppCompatActivity {
         setLinkOnText(binding.txtLcAgree);
         setLinkOnText(binding.signNow);
 
+        // Configure sign-in to request the user's ID, email address, and basic
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        GoogleSignInOptions gso =
+                new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestEmail()
+                        .requestIdToken(getString(R.string.SIGN_IN_CLIENT_ID))
+                        .build();
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        // Check for existing Google Sign In account, if the user is already signed in
+        // the GoogleSignInAccount will be non-null.
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        // if account is non null, update UI accordingly
+        updateUI(account);
+
+    }
+
+    private void registerGoogleSignInCallback() {
+        // You can do the assignment inside onAttach or onCreate, i.e, before the activity is displayed
+        resultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        // There are no request codes
+                        Intent data = result.getData();
+                        // The Task returned from this call is always completed, no need to attach
+                        // a listener.
+                        Task<GoogleSignInAccount>
+                                task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                        handleSignInResult(task);
+                    }
+                });
+    }
+
+    private void doGoogleSignIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        resultLauncher.launch(signInIntent);
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            // Signed in successfully, show authenticated UI.
+            updateUI(account);
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
+            updateUI(null);
+        }
+
+    }
+
+    private void updateUI(GoogleSignInAccount account) {
+        if (account != null)
+            GoogleLoginCompletionActivity
+                    .start(this, account.getGivenName(), account.getFamilyName());
     }
 
     private void detectLinkClick(SpannableStringBuilder strBuilder, final URLSpan span) {
@@ -50,16 +121,14 @@ public class RegistrationActivity extends AppCompatActivity {
                     case "@login_page":
                         startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
                         break;
-                    case "www.privacy-options.com":
-                        String link1 = "www.privacy-options.com";
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link1)));
+                    case "http://www.privacy-options.com":
+                        Uri link1 = Uri.parse("http://www.privacy-options.com");
+                        startActivity(new Intent(Intent.ACTION_VIEW, link1));
                         break;
-                    case "www.terms-and-conditions.com":
-                        String link2 = "www.terms-and-conditions.com";
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link2)));
+                    case "http://www.terms-and-conditions.com":
+                        Uri link2 = Uri.parse("http://www.terms-and-conditions.com");
+                        startActivity(new Intent(Intent.ACTION_VIEW, link2));
                         break;
-                    default:
-                        Log.w(getClass().getSimpleName(), "No action for this");
 
                 }
             }
