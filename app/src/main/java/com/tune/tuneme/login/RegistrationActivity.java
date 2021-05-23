@@ -39,7 +39,9 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         registerGoogleSignInCallback();
+        binding.exit.setOnClickListener(v -> onBackPressed());
         binding.gSignParent.setOnClickListener(v -> doGoogleSignIn());
+
 
         String phoneNumber = binding.phoneNumber.getText().toString();
         binding.signUp.setOnClickListener(v -> VerificationActivity.start(this, phoneNumber));

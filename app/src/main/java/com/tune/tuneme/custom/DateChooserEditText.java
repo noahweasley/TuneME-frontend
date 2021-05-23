@@ -94,7 +94,7 @@ public class DateChooserEditText extends TextInputEditText {
                 y = actionY;
 
                 if (!bounds.contains(actionX, actionY)) {
-                    /* Gives the +20 area for tapping. */
+                    // Gives the +20 area for tapping.
                     x = (int) (actionX - extraTapArea);
                     y = (int) (actionY - extraTapArea);
 
@@ -103,7 +103,7 @@ public class DateChooserEditText extends TextInputEditText {
                     if (y <= 0)
                         y = actionY;
 
-                    /* Creates square from the smallest value */
+                    // Creates square from the smallest value
                     if (x < y) {
                         y = x;
                     }
@@ -160,7 +160,7 @@ public class DateChooserEditText extends TextInputEditText {
 
                 x -= 52; // correcting the imaginary bounding box's x-axis
 
-                /*If drawable bounds contains the x and y points then move ahead.*/
+                // If drawable bounds contains the x and y points then move ahead.
                 if (bounds.contains(x, y) && clickListener != null) {
                     clickListener.onClick(OnDrawableClickListener.DrawablePosition.RIGHT);
                     event.setAction(MotionEvent.ACTION_CANCEL);

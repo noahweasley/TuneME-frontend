@@ -3,6 +3,7 @@ package com.tune.tuneme.login;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,15 @@ public class GoogleLoginCompletionActivity extends AppCompatActivity {
     private static final String ARG_LAST_NAME = "Google User Last Name";
     private GoogleLoginBinding binding;
 
+    /**
+     * Helper method used in starting this activity while passing the required parameters
+     * <code>firstName</code> and <code>lastName</code> can be null. But it also means that there
+     * would be no username generated
+     *
+     * @param context   the starter of this activity
+     * @param firstName the required first name of the user that would be used to generate a random username
+     * @param lastName  the required last name of the user hat would be used to generate a random username
+     */
     public static void start(Context context, String firstName, String lastName) {
         Intent starter = new Intent(context, GoogleLoginCompletionActivity.class);
         starter.putExtra(ARG_FIRST_NAME, firstName);
@@ -38,6 +48,9 @@ public class GoogleLoginCompletionActivity extends AppCompatActivity {
     private String generateRandomUserName() {
         String firstName = getIntent().getStringExtra(ARG_FIRST_NAME);
         String lastName = getIntent().getStringExtra(ARG_LAST_NAME);
+
+        // don't generate any random username if first and last name wasn't provided
+        if (TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName)) return null;
 
         String l_firstName = firstName.toLowerCase();
         String l_lastName = lastName.toLowerCase();

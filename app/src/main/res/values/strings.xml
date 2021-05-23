@@ -48,5 +48,13 @@
     <string name="default_phone_number">+2347055478947</string>
     <string name="edit_phone_number">Edit Phone Number</string>
     <string name="SIGN_IN_CLIENT_ID">"490372290045-rcpn8t98q20kvqek2qfh74g73a6dm481.apps.googleusercontent.com"</string>
+    <string name="access_message">Login to access your account.</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="remember_me">Remember me</string>
+    <string name="login_now">Don\'t have an account yet?</string>
+    <string name="forgot_password_2">Forgot Password</string>
+    <string name="recovery_message">Restore your account</string>
+    <string name="enter_email">Enter your email</string>
 
 </resources>
