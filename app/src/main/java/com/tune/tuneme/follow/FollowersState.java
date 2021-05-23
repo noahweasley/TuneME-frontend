@@ -67,6 +67,11 @@ public class FollowersState implements State {
         return indices.toArray(new Integer[0]);
     }
 
+    /**
+     * Enable logging of followers state
+     *
+     * @param loggingEnabled if logging should be enabled or not
+     */
     void setLoggingEnabled(boolean loggingEnabled) {
         this.loggingEnabled = loggingEnabled;
     }
