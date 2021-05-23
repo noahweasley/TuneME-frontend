@@ -2,6 +2,10 @@ package com.tune.tuneme.follow;
 
 import android.os.Bundle;
 
+/**
+ * This represents any list of items that it's state needs to be restored even when views have
+ * been recycled and no longer exists.
+ */
 @SuppressWarnings("unused")
 public interface State {
 
@@ -32,7 +36,7 @@ public interface State {
 
     /**
      * Call this when restoring apps state passing a valid bundle as the parameter, or else
-     *checked follower's state won't be retrieved at all.
+     * checked follower's state won't be retrieved at all.
      * Use with onRestoreInstanceState.
      *
      * @param bundle the bundle in which state would be saved
