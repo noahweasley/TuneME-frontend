@@ -6,7 +6,7 @@ import android.net.Uri;
  * Basic followers information
  */
 @SuppressWarnings("unused")
-public class Followers {
+public class Followers extends DataModel{
     private String userName;
     private String profileName;
     private Uri profilePicture;

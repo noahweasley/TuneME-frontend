@@ -14,7 +14,7 @@ import com.tune.tuneme.R;
 import com.tune.tuneme.data.Followers;
 import com.tune.tuneme.databinding.AddFollowersBinding;
 import com.tune.tuneme.discover.DiscoverActivity;
-import com.tune.tuneme.util.DummyFollowers;
+import com.tune.tuneme.util.DummyGenerator;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class AddFollowersPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // use dummy followers for now
-        followersList = DummyFollowers.initialize(20);
+        followersList = DummyGenerator.getDummyFollowers(20);
 
         super.onCreate(savedInstanceState);
         binding = AddFollowersBinding.inflate(getLayoutInflater());
@@ -76,7 +76,7 @@ public class AddFollowersPageActivity extends AppCompatActivity {
                     int scrollPos = followersList.size();
                     followersList.remove(lastItem);
                     endlessFollowersAdapter.notifyItemRemoved(scrollPos);
-                    followersList.addAll(DummyFollowers.initialize(5));
+                    followersList.addAll(DummyGenerator.getDummyFollowers(5));
                     endlessFollowersAdapter.notifyDataSetChanged();
                     isLoading = false;
                 }, 5000);

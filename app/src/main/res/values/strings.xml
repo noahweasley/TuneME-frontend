@@ -56,5 +56,15 @@
     <string name="forgot_password_2">Forgot Password</string>
     <string name="recovery_message">Restore your account</string>
     <string name="enter_email">Enter your email</string>
+    <string name="notifications">notifications</string>
+    <string name="_1">1</string>
+    <string name="_99">99</string>
+    <string name="add_post">add post</string>
+    <string name="videos">Videos</string>
+    <string name="products">Products</string>
+    <string name="chats">Chats</string>
+    <string name="more">More</string>
+    <string name="home">Home</string>
+    <string name="story_image">story image</string>
 
 </resources>
