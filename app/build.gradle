@@ -8,7 +8,8 @@ android {
 
     defaultConfig {
         applicationId "com.tune.tuneme"
-        minSdkVersion 16
+        // supports devices >= API level 21. The headaches was just too much
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0.0"
