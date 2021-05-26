@@ -8,6 +8,44 @@
         <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>
         <item name="pinViewStyle">@style/PinWidget.PinView</item>
+        <item name="android:dialogTheme">@style/Theme.DialogTheme</item>
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+    </style>
+
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+
+    <style name="Theme.Slide_Vertical" parent="Theme.Tuneme">
+        <item name="android:windowAnimationStyle">@style/Slide_Vertical_Animation</item>
+    </style>
+
+    <style name="Theme.No_Close_Anim" parent="Theme.Tuneme">
+        <item name="android:windowAnimationStyle">@style/Slide_No_Close_Anim</item>
+    </style>
+
+    <style name="Slide_No_Close_Anim" parent="CustomActivityAnimation">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/no_anim</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_top</item>
+    </style>
+
+    <style name="Slide_Vertical_Animation" parent="CustomActivityAnimation">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:activityOpenExitAnimation">@anim/no_anim</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_out_top</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_top</item>
+    </style>
+
+    <style name="Theme.DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 
     <style name="Theme.FullScreen" parent="Theme.Tuneme">
@@ -15,7 +53,8 @@
     </style>
 
     <style name="Theme.Immersive" parent="Theme.Tuneme">
-        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges
+        </item>
     </style>
 
     <style name="rounded">

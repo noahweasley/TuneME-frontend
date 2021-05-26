@@ -66,5 +66,12 @@
     <string name="more">More</string>
     <string name="home">Home</string>
     <string name="story_image">story image</string>
+    <string name="create_post">Create Post</string>
+    <string name="post">POST</string>
+    <string name="post_hint">Write something</string>
+    <string name="attach_picture">attach picture</string>
+    <string name="attach_video">attach video</string>
+    <string name="add_location">add location</string>
+    <string name="attach_link">attach link</string>
 
 </resources>
