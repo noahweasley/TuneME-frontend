@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.view.animation.AnimationUtils;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,7 +60,6 @@ public class TuneSplashScreen extends AppCompatActivity {
 
         String versionName = String.format(Locale.US, "%s: %s", "Version: ", version);
         binding.versionName.setText(versionName);
-        binding.tuneIcon.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_2));
         // sub-sample image when stored in memory
         Bitmap bitmap = ImageUtils.decodeSampledBitmapFromResource(getResources(),
                 R.drawable.splash_screen_wallpaper);

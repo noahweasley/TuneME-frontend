@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tune.tuneme.R;
 import com.tune.tuneme.data.Followers;
 import com.tune.tuneme.databinding.AddFollowersBinding;
-import com.tune.tuneme.discover.DiscoverActivity;
+import com.tune.tuneme.main.MainScreenActivity;
 import com.tune.tuneme.util.DummyGenerator;
 
 import java.util.List;
@@ -46,7 +46,7 @@ public class AddFollowersPageActivity extends AppCompatActivity {
         OverScrollDecoratorHelper
                 .setUpOverScroll(rV_followersList, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
 
-        binding.next.setOnClickListener(v -> DiscoverActivity.start(this));
+        binding.next.setOnClickListener(v -> MainScreenActivity.start(this));
     }
 
     // starts end of scroll detection

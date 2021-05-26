@@ -1,13 +1,13 @@
-package com.tune.tuneme.discover;
+package com.tune.tuneme.main;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,44 +21,38 @@ import java.util.List;
 
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
-@SuppressWarnings("ConstantConditions")
-public class DiscoverActivity extends AppCompatActivity {
+public class DiscoverFragment extends Fragment {
     private DiscoverBinding binding;
     private List<Story> storyList;
 
-    /**
-     * Simple helper method to start this activity
-     *
-     * @param context the origin context
-     */
-    public static void start(Context context) {
-        Intent starter = new Intent(context, DiscoverActivity.class);
-        context.startActivity(starter);
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return (binding = DiscoverBinding.inflate(inflater)).getRoot();
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         storyList = new ArrayList<>();
         storyList.add(null); // for the add story button
 
         storyList.addAll(DummyGenerator.getDummyStory(10));
 
-        binding = DiscoverBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
         RecyclerView rV_storyList = binding.storyList;
         rV_storyList.setAdapter(new StoryAdapter());
         rV_storyList.setLayoutManager(
-                new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+                new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         // implement IOS style overscroll effect
         OverScrollDecoratorHelper
                 .setUpOverScroll(rV_storyList, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         binding = null;
     }
 

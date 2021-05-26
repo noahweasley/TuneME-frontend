@@ -38,7 +38,6 @@ public class CompleteRegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(R.anim.fade_in_1, R.anim.fade_out_1);
         binding = CompleteRegistrationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -105,7 +104,6 @@ public class CompleteRegistrationActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.fade_in_1, R.anim.fade_out_1);
     }
 
     @Override

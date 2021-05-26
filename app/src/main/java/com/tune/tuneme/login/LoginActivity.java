@@ -19,7 +19,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.tune.tuneme.R;
 import com.tune.tuneme.databinding.LoginBinding;
-import com.tune.tuneme.discover.DiscoverActivity;
+import com.tune.tuneme.main.MainScreenActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private LoginBinding binding;
@@ -30,7 +30,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(R.anim.fade_in_1, R.anim.fade_out_1);
         binding = LoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -70,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (id == R.id.recovery) {
             startActivity(new Intent(this, RecoveryActivity.class));
         } else if (id == R.id.login) {
-            DiscoverActivity.start(this);
+            MainScreenActivity.start(this);
         } else if (id == R.id.g_sign_parent) {
             doGoogleSignIn();
         } else if (id == R.id.exit) {
@@ -122,7 +121,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     // if already logged in, just go to the main screen
     private void updateUI(GoogleSignInAccount account) {
         if (account != null)
-            DiscoverActivity.start(this);
+            MainScreenActivity.start(this);
     }
 
 }

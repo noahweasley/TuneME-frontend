@@ -1,4 +1,4 @@
-package com.tune.tuneme.discover;
+package com.tune.tuneme.main;
 
 import android.view.View;
 
