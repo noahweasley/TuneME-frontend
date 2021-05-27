@@ -12,7 +12,7 @@
 
 * **custom**: contains custom widgets used in the project.
 * **data**: contains all data classes used in the project.
-* **database**: contains the app's database specific logic, both **_Room_** and
+* **database**: contains the app's database specific logic, both **_Room database_** and
                 **_Tune's external api backend_**.
 * **follow**: contains the logic for _fetch and add_ followers.
 * **intro**: contains the logic for the intro pages.
