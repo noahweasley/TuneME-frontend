@@ -1,4 +1,4 @@
-# Tuneme; The front end part
+# TuneMe-frontend
 
 ## Project package details
 
