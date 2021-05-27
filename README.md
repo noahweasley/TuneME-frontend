@@ -1,14 +1,6 @@
-# Tuneme
+# Tuneme; The front end part
 
-## The front end part
-
-### Collaboration Rules
-
-1. Method chaining are not allowed.
-2. Chaining are allowed only if the builder pattern is involved.
-3. Code formatting should follow the one that is set for this project.
-
-### Project package details
+## Project package details
 
 * **custom**: contains custom widgets used in the project.
 * **data**: contains all data classes used in the project.
@@ -20,3 +12,9 @@
 * **main**: contains the specific UI controllers / screens in which the user is likely to spend
             most of their time on.
 * **util**: contains program specific utility classes, methods, ...
+
+## Collaboration Rules
+
+1. Method chaining are not allowed.
+2. Chaining are allowed only if the builder pattern is involved.
+3. Code formatting should follow the one that is set for this project.
