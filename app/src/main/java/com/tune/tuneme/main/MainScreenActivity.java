@@ -42,9 +42,10 @@ public class MainScreenActivity extends AppCompatActivity
         binding = MainScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        loadFragment(new DiscoverFragment()); // the default fragment
+        loadFragment(new NewsFeedFragment()); // the default fragment
 
         binding.addPost.setOnClickListener(this);
+        binding.notification.setOnClickListener(this);
         binding.bottomNavigation.setOnNavigationItemSelectedListener(this);
     }
 
@@ -59,6 +60,8 @@ public class MainScreenActivity extends AppCompatActivity
         int viewId = v.getId();
         if (viewId == R.id.add_post) {
             startActivity(new Intent(this, AddPostActivity.class));
+        }else if(viewId == R.id.notification){
+            startActivity(new Intent(this, NotificationsActivity.class));
         }
     }
 
@@ -69,7 +72,7 @@ public class MainScreenActivity extends AppCompatActivity
 
         if (itemId == R.id.home) {
             tv_title.setText(R.string.discover);
-            loadFragment(new DiscoverFragment());
+            loadFragment(new NewsFeedFragment());
         } else if (itemId == R.id.videos) {
             tv_title.setText(R.string.videos);
             loadFragment(new VideoFragment());

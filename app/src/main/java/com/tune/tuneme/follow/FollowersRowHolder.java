@@ -1,5 +1,6 @@
 package com.tune.tuneme.follow;
 
+import android.net.Uri;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -73,8 +74,11 @@ public class FollowersRowHolder extends RecyclerView.ViewHolder {
 
             tv_username.setText(follower.getUserName());
             tv_profileName.setText(follower.getProfileName());
-            if (follower.getProfilePicture() != null) {
-                Picasso.get().load(follower.getProfilePicture()).noFade().into(img_profilePhoto);
+
+            Uri profilePicture = follower.getProfilePicture();
+
+            if (profilePicture != null) {
+                Picasso.get().load(profilePicture).noFade().into(img_profilePhoto);
             }
         }
 

@@ -46,7 +46,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/notification_background"
+                android:id="@+id/notification"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="16dp"
@@ -91,7 +91,7 @@
                 android:contentDescription="@string/add_post"
                 android:src="@drawable/ic_add_post"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/notification_background"
+                app:layout_constraintEnd_toStartOf="@id/notification"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -113,7 +113,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:backgroundTint="?android:attr/windowBackground"
+        app:backgroundTint="@android:color/white"
         app:itemIconTint="@color/bottom_navigation_selection"
         app:itemTextColor="@android:color/black"
         app:labelVisibilityMode="labeled"

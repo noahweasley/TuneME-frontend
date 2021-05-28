@@ -47,6 +47,7 @@ public class AddFollowersPageActivity extends AppCompatActivity {
                 .setUpOverScroll(rV_followersList, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
 
         binding.next.setOnClickListener(v -> MainScreenActivity.start(this));
+        binding.exit.setOnClickListener(v -> onBackPressed());
     }
 
     // starts end of scroll detection
