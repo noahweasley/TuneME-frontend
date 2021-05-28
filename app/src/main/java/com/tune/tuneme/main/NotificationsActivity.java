@@ -29,6 +29,7 @@ public class NotificationsActivity extends AppCompatActivity {
         binding = NotificationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Debugging mode. Get dummy notifications for now
         notificationList.addAll(DummyGenerator.getNotifications(10));
 
         RecyclerView rv_notificationList = binding.notificationList;

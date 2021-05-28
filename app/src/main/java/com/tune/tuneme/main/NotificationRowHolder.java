@@ -1,6 +1,7 @@
 package com.tune.tuneme.main;
 
 import android.net.Uri;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
@@ -18,33 +19,35 @@ import java.util.List;
 
 public class NotificationRowHolder extends RecyclerView.ViewHolder {
     private final ImageView img_profileImage;
-    private final TextView tv_userName, tv_message, tv_updateTime;
+    private final TextView tv_message, tv_updateTime;
     private Notification notification;
 
     public NotificationRowHolder(@NonNull View itemView) {
         super(itemView);
-        tv_userName = itemView.findViewById(R.id.user_name);
         tv_message = itemView.findViewById(R.id.message);
         tv_updateTime = itemView.findViewById(R.id.update_time);
         img_profileImage = itemView.findViewById(R.id.profile_image);
     }
 
     public void bindView() {
-        tv_userName.setText(notification.getUsername());
+        // easier way to convert ordinary string to a spanned string with bold texts
+        String completeMessage
+                = "<b>" + notification.getUsername() + "</b> " + notification.getMessage();
         tv_updateTime.setText(notification.getUpdateTime());
-        tv_message.setText(notification.getMessage());
+        tv_message.setText(Html.fromHtml(completeMessage));
 
+        // The user's profile image would be exactly 50dp x 50dp wide.
+        // Because Picasso's resize(int, int) method accepts only integers and is in pixels and
+        // and not dp, convert to pixels and provide an extra correction value of 10 dp to make up
+        // for any truncation of some of the floating point bits that would have been provided by the
+        // conversion from dp to px
         DisplayMetrics metrics = img_profileImage.getContext().getResources().getDisplayMetrics();
-        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, metrics);
+        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, metrics);
 
         Uri profileImage = notification.getProfileImage();
 
         if (profileImage != null)
-            Picasso.get().
-                    load(profileImage)
-                   .centerCrop()
-                   .resize(px, px)
-                   .into(img_profileImage);
+            Picasso.get().load(profileImage).centerCrop().resize(px, px).into(img_profileImage);
     }
 
     public NotificationRowHolder with(List<Notification> notificationList) {

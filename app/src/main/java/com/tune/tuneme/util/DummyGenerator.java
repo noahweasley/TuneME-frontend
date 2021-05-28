@@ -59,7 +59,7 @@ public class DummyGenerator {
         private static final String[] uTime = {
                 "1 hour ago", "4 hours ago", "2 seconds ago", "5 minutes ago"};
 
-        // indices
+        // array indices
         private static int dn = 0;
         private static int dm = 0;
         private static int dt = 0;
