@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tune.tuneme.R;
 import com.tune.tuneme.data.Story;
-import com.tune.tuneme.databinding.DiscoverBinding;
+import com.tune.tuneme.databinding.NewsFeedBinding;
 import com.tune.tuneme.util.DummyGenerator;
 
 import java.util.ArrayList;
@@ -21,15 +21,15 @@ import java.util.List;
 
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
-public class DiscoverFragment extends Fragment {
-    private DiscoverBinding binding;
+public class NewsFeedFragment extends Fragment {
+    private NewsFeedBinding binding;
     private List<Story> storyList;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return (binding = DiscoverBinding.inflate(inflater)).getRoot();
+        return (binding = NewsFeedBinding.inflate(inflater)).getRoot();
     }
 
     @Override
@@ -38,7 +38,7 @@ public class DiscoverFragment extends Fragment {
         storyList = new ArrayList<>();
         storyList.add(null); // for the add story button
 
-        storyList.addAll(DummyGenerator.getDummyStory(10));
+        storyList.addAll(DummyGenerator.getDummyStories(10));
 
         RecyclerView rV_storyList = binding.storyList;
         rV_storyList.setAdapter(new StoryAdapter());
