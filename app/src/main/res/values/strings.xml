@@ -75,6 +75,6 @@
     <string name="add_location">add location</string>
     <string name="attach_link">attach link</string>
     <string name="default_update_time">1 hour ago</string>
-    <string name="default_message">liked your comment</string>
+    <string name="default_message"><b>Noah wesley</b> liked your comment</string>
 
 </resources>
