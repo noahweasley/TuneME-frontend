@@ -57,6 +57,7 @@
     <string name="recovery_message">Restore your account</string>
     <string name="enter_email">Enter your email</string>
     <string name="notifications">notifications</string>
+    <string name="title_notification">Notifications</string>
     <string name="_1">1</string>
     <string name="_99">99</string>
     <string name="add_post">add post</string>
@@ -73,5 +74,7 @@
     <string name="attach_video">attach video</string>
     <string name="add_location">add location</string>
     <string name="attach_link">attach link</string>
+    <string name="default_update_time">1 hour ago</string>
+    <string name="default_message">liked your comment</string>
 
 </resources>

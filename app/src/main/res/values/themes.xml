@@ -10,6 +10,7 @@
         <item name="pinViewStyle">@style/PinWidget.PinView</item>
         <item name="android:dialogTheme">@style/Theme.DialogTheme</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">never</item>
     </style>
 
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
@@ -50,6 +51,7 @@
 
     <style name="Theme.FullScreen" parent="Theme.Tuneme">
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">default</item>
     </style>
 
     <style name="Theme.Immersive" parent="Theme.Tuneme">
