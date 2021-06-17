@@ -76,5 +76,8 @@
     <string name="attach_link">attach link</string>
     <string name="default_update_time">1 hour ago</string>
     <string name="default_message"><b>Noah wesley</b> liked your comment</string>
+    <string name="video_all_caps">VIDEOS</string>
+    <string name="movie_all_caps">MOVIES</string>
+    <string name="others">OTHERS</string>
 
 </resources>

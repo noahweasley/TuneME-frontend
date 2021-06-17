@@ -91,7 +91,8 @@ public class CompleteRegistrationActivity extends AppCompatActivity {
             // and not the TextInputLayout
             if (!dateMatches) {
                 ViewGroup container = (ViewGroup) datePicker.getParent();
-                ((TextInputLayout) container.getParent()).setError("dd-mm-yyyy or dd/mm-yyy");
+                TextInputLayout til_datePickerParent = ((TextInputLayout) container.getParent());
+                til_datePickerParent.setError("Format: dd-mm-yyyy or dd/mm/yyy");
             }
 
             if (isCountryEmpty) {

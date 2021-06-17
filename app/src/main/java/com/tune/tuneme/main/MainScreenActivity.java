@@ -17,6 +17,12 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.tune.tuneme.R;
 import com.tune.tuneme.databinding.MainScreenBinding;
+import com.tune.tuneme.main.chats.ChatsFragment;
+import com.tune.tuneme.main.notification.NotificationsActivity;
+import com.tune.tuneme.main.posts.AddPostActivity;
+import com.tune.tuneme.main.posts.NewsFeedFragment;
+import com.tune.tuneme.main.products.ProductsFragment;
+import com.tune.tuneme.main.video.VideoFragment;
 
 @SuppressWarnings("ConstantConditions")
 public class MainScreenActivity extends AppCompatActivity

@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@android:color/white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <TextView
         android:id="@+id/title"
@@ -44,8 +44,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="32dp"
             android:padding="2dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_profile"
+            android:src="@drawable/ic_image_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -63,8 +62,8 @@
 
             <View
                 android:id="@+id/view2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:background="@drawable/inner_padding"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -101,12 +100,11 @@
             android:layout_height="match_parent"
             android:layout_marginTop="24dp"
             android:autofillHints=""
-            android:maxLines="1"
             android:drawableEnd="@drawable/ic_baseline_date_range_24"
-            android:drawableRight="@drawable/ic_baseline_date_range_24"
             android:drawablePadding="50dp"
             android:hint="@string/date_of_birth"
             android:inputType="date"
+            android:maxLines="1"
             android:paddingStart="16dp"
             android:paddingLeft="16dp"
             android:paddingEnd="16dp"
@@ -121,17 +119,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingLeft="16dp"
+        android:paddingHorizontal="16dp"
         app:layout_constraintEnd_toStartOf="@+id/right_guide"
         app:layout_constraintStart_toStartOf="@+id/left_guide"
-        app:layout_constraintTop_toBottomOf="@id/date_picker_actions"
-        tools:ignore="RtlSymmetry">
+        app:layout_constraintTop_toBottomOf="@id/date_picker_actions">
 
         <RadioButton
             android:id="@+id/male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:checked="true"
             android:text="@string/male" />
 
@@ -139,7 +136,15 @@
             android:id="@+id/female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/female" />
+
+        <RadioButton
+            android:id="@+id/others"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/others" />
 
     </RadioGroup>
 
@@ -148,7 +153,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/right_guide"
         app:layout_constraintStart_toStartOf="@+id/left_guide"
@@ -159,10 +163,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-            android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
             android:hint="@string/country"
-            android:paddingStart="16dp"
             android:maxLines="2"
+            android:paddingStart="16dp"
             android:paddingLeft="16dp"
             android:paddingEnd="16dp"
             android:paddingRight="16dp"

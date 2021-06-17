@@ -1,4 +1,4 @@
-package com.tune.tuneme.main;
+package com.tune.tuneme.main.notification;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +37,8 @@ public class NotificationsActivity extends AppCompatActivity {
         rv_notificationList.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         rv_notificationList.setAdapter(new NotificationsAdapter());
+        rv_notificationList
+                .addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         // set up IOS style overscroll effect
         OverScrollDecoratorHelper.setUpOverScroll(rv_notificationList,
                                                   OverScrollDecoratorHelper.ORIENTATION_VERTICAL);

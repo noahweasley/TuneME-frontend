@@ -1,4 +1,4 @@
-package com.tune.tuneme.main;
+package com.tune.tuneme.main.notification;
 
 import android.net.Uri;
 import android.text.Html;
@@ -35,7 +35,6 @@ public class NotificationRowHolder extends RecyclerView.ViewHolder {
                 = "<b>" + notification.getUsername() + "</b> " + notification.getMessage();
         tv_updateTime.setText(notification.getUpdateTime());
         tv_message.setText(Html.fromHtml(completeMessage));
-
         // The user's profile image would be exactly 50dp x 50dp wide.
         // Because Picasso's resize(int, int) method accepts only integers and is in pixels and
         // and not dp, convert to pixels and provide an extra correction value of 10 dp to make up

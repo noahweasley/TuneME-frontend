@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-@SuppressWarnings("all")
+@SuppressWarnings("FieldCanBeLocal")
 public class DateChooserEditText extends TextInputEditText {
     private Drawable drawableRight;
     private Drawable drawableLeft;
@@ -182,7 +182,6 @@ public class DateChooserEditText extends TextInputEditText {
         super.finalize();
     }
 
-    @SuppressWarnings("unused")
     public void setOnDrawableClickListener(OnDrawableClickListener listener) {
         this.clickListener = listener;
     }
